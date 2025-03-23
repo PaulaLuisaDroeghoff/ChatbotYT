@@ -94,14 +94,21 @@ const YouTubeLearningChatbot: React.FC = () => {
                             userMessage.toLowerCase().includes('week') ||
                             userMessage.toLowerCase().includes('month');
         
-        // Find the correct learning path based on the previous topic
-        let learningPathLink = "/learning-paths/general"; // Default fallback
+        // This is a follow-up message with more details
+        let previousTopic = "your topic";
+        let learningPathLink = "/learning-paths/general";
         
-        if (previousTopic === 'Machine Learning') {
+        // Check what topic was in the previous bot message
+        const previousBotMessage = messages[lastBotMessageIndex].text;
+        
+        if (previousBotMessage.includes('/learning-paths/machinelearning')) {
+            previousTopic = "Machine Learning";
             learningPathLink = "/learning-paths/machinelearning";
-        } else if (previousTopic === 'JavaScript') {
+        } else if (previousBotMessage.includes('/learning-paths/javascript')) {
+            previousTopic = "JavaScript";
             learningPathLink = "/learning-paths/javascript";
-        } else if (previousTopic === 'Guitar') {
+        } else if (previousBotMessage.includes('/learning-paths/guitar')) {
+            previousTopic = "Guitar";
             learningPathLink = "/learning-paths/guitar";
         }
         botResponse = `Thanks for sharing more details! I've updated your ${previousTopic} learning path [here](${learningPathLink}).`;
