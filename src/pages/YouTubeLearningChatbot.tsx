@@ -67,8 +67,8 @@ const YouTubeLearningChatbot: React.FC = () => {
         } else if (userMessage.toLowerCase().includes('javascript') || userMessage.toLowerCase().includes('js')) {
             botResponse = "Great! I have created the following learning path for you [here](/learning-paths/javascript). To tailor your learning path better to your specific needs, feel free to share more details such as your learning goal, your current knowledge level, or how long you want to learn for.";
             hasLink = true;
-        } else if (userMessage.toLowerCase().includes('guitar') || userMessage.toLowerCase().includes('music')) {
-            botResponse = "Great! I have created the following learning path for you [here](/learning-paths/guitarlearningpath). To tailor your learning path better to your specific needs, feel free to share more details such as your learning goal, your current knowledge level, or how long you want to learn for.";
+        } else if (userMessage.toLowerCase().includes('guitar') || userMessage.toLowerCase().includes('guitar')) {
+            botResponse = "Great! I have created the following learning path for you [here](/learning-paths/guitar). To tailor your learning path better to your specific needs, feel free to share more details such as your learning goal, your current knowledge level, or how long you want to learn for.";
             hasLink = true;
         } else {
             botResponse = "I'd be happy to help you learn that! To create a personalized learning path for you, could you provide more details about what specific topic you're interested in? It would also help to know your current skill level and learning goals.";
