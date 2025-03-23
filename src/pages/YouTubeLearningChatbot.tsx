@@ -75,7 +75,7 @@ const YouTubeLearningChatbot: React.FC = () => {
         }
       } else {
         // This is a follow-up message with more details
-        const previousTopic = messages[lastBotMessageIndex].text.includes('machine learning') ? 'Machine learning' : 
+        const previousTopic = messages[lastBotMessageIndex].text.includes('machine learning') ? 'Machine Learning' : 
                               messages[lastBotMessageIndex].text.includes('javascript') ? 'JavaScript' :
                               messages[lastBotMessageIndex].text.includes('guitar') ? 'Guitar' : 'your topic';
         
@@ -95,15 +95,16 @@ const YouTubeLearningChatbot: React.FC = () => {
                             userMessage.toLowerCase().includes('month');
         
         // Find the correct learning path based on the previous topic
-const learningPathLink = previousTopic.toLowerCase().includes("machine learning") 
-? "/learning-paths/machinelearning"
-: previousTopic.toLowerCase().includes("javascript")
-? "/learning-paths/javascript"
-: previousTopic.toLowerCase().includes("guitar")
-? "/learning-paths/guitar"
-: "/learning-paths/general"; // Fallback option
-
-botResponse = `Thanks for sharing more details! I've updated your ${previousTopic} learning path [here](${learningPathLink}).`;
+        let learningPathLink = "/learning-paths/general"; // Default fallback
+        
+        if (previousTopic === 'Machine Learning') {
+            learningPathLink = "/learning-paths/machinelearning";
+        } else if (previousTopic === 'JavaScript') {
+            learningPathLink = "/learning-paths/javascript";
+        } else if (previousTopic === 'Guitar') {
+            learningPathLink = "/learning-paths/guitar";
+        }
+        botResponse = `Thanks for sharing more details! I've updated your ${previousTopic} learning path [here](${learningPathLink}).`;
         
         if (isBeginnerMessage) {
           botResponse += " I've focused on beginner-friendly content that will help you build a solid foundation.";
